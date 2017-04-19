@@ -1,0 +1,28 @@
+{
+  "name": "vsphere-vm-monitor",
+  "version": "0.0.1",
+  "description": "VirtualMachine and Service monitor for vSphere (VMware ESXi Cluster) ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlueT/vsphere-vm-monitor.git"
+  },
+  "keywords": [
+    "monitoring",
+    "vm",
+    "vmware",
+    "vsphere",
+    "vsphere-sdk",
+    "status",
+    "nodejs"
+  ],
+  "author": "BlueT - Matthew Lien - 練喆明 <BlueT@BlueT.org>",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/BlueT/vsphere-vm-monitor/issues"
+  },
+  "homepage": "https://github.com/BlueT/vsphere-vm-monitor#readme"
+}
