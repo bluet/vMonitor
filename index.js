@@ -3,19 +3,16 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 var vsphere = require("./vendor/vsphere-sdk/dist/vsphere.js");
+var config = require("./config.json");
 
-var hostname = "",
-    username = "",
-    password = "";
-
-vsphere.vimService(hostname).then(function(service) {
+vsphere.vimService(config.hostname).then(function(service) {
 	var propertyCollector = service.serviceContent.propertyCollector,
 	    rootFolder = service.serviceContent.rootFolder,
 	    sessionManager = service.serviceContent.sessionManager,
 	    viewManager = service.serviceContent.viewManager,
 	    vim = service.vim,
 	    vimPort = service.vimPort;
-	return vimPort.login(sessionManager, username, password)
+	return vimPort.login(sessionManager, config.username, config.password)
 	.then(function() {
 		return vimPort.createContainerView(viewManager, rootFolder,
 		[ "VirtualMachine" ], true);
