@@ -41,7 +41,7 @@ function info (args, on_success, on_error) {
 						skip: true,
 						selectSet: vim.TraversalSpec({
 							path: "view",
-							type: args.type
+							type: "ContainerView"
 						})
 					}),
 					propSet: vim.PropertySpec(args)
