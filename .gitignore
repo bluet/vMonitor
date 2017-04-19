@@ -39,3 +39,5 @@ jspm_packages
 # local config
 config.json
 
+# Can not distribute due to confliction of VMware license
+vendor/vsphere-sdk/*
