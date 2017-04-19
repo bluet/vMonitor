@@ -49,14 +49,13 @@ function info (args, on_success, on_error) {
 			], vim.RetrieveOptions());
 		})
 		.then(function(result) {
-			result.objects.forEach(function(item) {
-				
-				if (typeof on_success === 'function') {
-					on_success(item.propSet);
-				} else {
+			if (typeof on_success === 'function') {
+				on_success(item.propSet);
+			} else {
+				result.objects.forEach(function(item) {
 					console.log(JSON.stringify(item.propSet, null, 4));
-				}
-			});
+				});
+			}
 			return vimPort.logout(sessionManager);
 		});
 	}).catch(function(err) {
