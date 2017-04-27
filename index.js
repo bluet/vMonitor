@@ -103,7 +103,7 @@ vsphere_easy.prototype.vm_info = function vm_info (args) {
 }
 
 
-var conf = require("./config.json");
+var conf = require(appRoot + "/config.json");
 var v = new vsphere_easy(conf);
 
 v.vm_info();
