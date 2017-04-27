@@ -1,16 +1,37 @@
 "use strict";
 
-if (process.env.NODE_TLS_REJECT_UNAUTHORIZED !== 1) {
-	process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
+function vsphere_easy(args) {
+	var self = this;
+	this.sdk_path = "./vendor/vsphere-sdk/dist/vsphere.js";
+	this.hostname = '';
+	this.username = '';
+	this.password = '';
+	this.sdk = {};
+	
+	return this.setup(args);
+};
+
+
+vsphere_easy.prototype.setup = function setup (args, on_success, on_error) {
+	
+	this.sdk_path = args.sdk_path || this.sdk_path;
+	this.hostname = args.hostname || this.hostname;
+	this.username = args.username || this.username;
+	this.password = args.password || this.password;
+	
+	if ( typeof args.ignore_tls_error !== 'undefined' && args.ignore_tls_error !== 0) {
+		process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+	}
+	
+	this.sdk = require(this.sdk_path);
+	
+	return this;
 }
 
-var vsphere = require("./vendor/vsphere-sdk/dist/vsphere.js");
-var config = require("./config.json");
 
-vm_info();
-//~ info();
-
-function info (args, on_success, on_error) {
+vsphere_easy.prototype.info = function info (args, on_success, on_error) {
+	var self = this;
 	
 	if (typeof args !== 'object') {
 		var err = new Error('Please specify what you are looking for.');
@@ -21,14 +42,14 @@ function info (args, on_success, on_error) {
 		}
 	}
 	
-	vsphere.vimService(config.hostname).then(function(service) {
+	this.sdk.vimService(self.hostname).then(function(service) {
 		var propertyCollector = service.serviceContent.propertyCollector,
 		    rootFolder = service.serviceContent.rootFolder,
 		    sessionManager = service.serviceContent.sessionManager,
 		    viewManager = service.serviceContent.viewManager,
 		    vim = service.vim,
 		    vimPort = service.vimPort;
-		return vimPort.login(sessionManager, config.username, config.password)
+		return vimPort.login(sessionManager, self.username, self.password)
 		.then(function() {
 			return vimPort.createContainerView(viewManager, rootFolder,
 			[ args.type ], true);
@@ -67,7 +88,7 @@ function info (args, on_success, on_error) {
 	});
 }
 
-function vm_info (args) {
+vsphere_easy.prototype.vm_info = function vm_info (args) {
 	
 	if (typeof args !== 'object') {
 		args = {
@@ -78,8 +99,14 @@ function vm_info (args) {
 		args[type] = "VirtualMachine";
 	}
 	
-	info(args);
+	this.info(args);
 }
+
+
+var conf = require("./config.json");
+var v = new vsphere_easy(conf);
+
+v.vm_info();
 
 // http://pubs.vmware.com/vsphere-60/index.jsp?topic=/com.vmware.wssdk.apiref.doc/index.html&single=true
 // https://labs.vmware.com/flings/vsphere-sdk-for-javascript?download_url=https%3A%2F%2Fdownload3.vmware.com%2Fsoftware%2Fvmw-tools%2Fvsphere-sdk-for-javascript%2Fvsphere-1.1.0-src.tgz#comments

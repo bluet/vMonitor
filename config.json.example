@@ -1,5 +1,6 @@
 {
   "hostname": "",
   "username": "",
-  "password": ""
+  "password": "",
+  "ignore_tls_error": 1
 }
