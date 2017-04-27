@@ -1,9 +1,9 @@
 "use strict";
-
+var appRoot = require('app-root-path');
 
 function vsphere_easy(args) {
 	var self = this;
-	this.sdk_path = "./vendor/vsphere-sdk/dist/vsphere.js";
+	this.sdk_path = appRoot + "/vendor/vsphere-sdk/dist/vsphere.js";
 	this.hostname = '';
 	this.username = '';
 	this.password = '';
