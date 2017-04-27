@@ -1,5 +1,5 @@
 {
-  "name": "vsphere-vm-monitor",
+  "name": "vMonitor",
   "version": "0.0.1",
   "description": "VirtualMachine and Service monitor for vSphere (VMware ESXi Cluster) ",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BlueT/vsphere-vm-monitor.git"
+    "url": "git+https://github.com/BlueT/vMonitor.git"
   },
   "keywords": [
     "monitoring",
@@ -22,7 +22,7 @@
   "author": "BlueT - Matthew Lien - 練喆明 <BlueT@BlueT.org>",
   "license": "AGPL-3.0",
   "bugs": {
-    "url": "https://github.com/BlueT/vsphere-vm-monitor/issues"
+    "url": "https://github.com/BlueT/vMonitor/issues"
   },
-  "homepage": "https://github.com/BlueT/vsphere-vm-monitor#readme"
+  "homepage": "https://github.com/BlueT/vMonitor#readme"
 }
