@@ -102,11 +102,7 @@ vsphere_easy.prototype.vm_info = function vm_info (args) {
 	this.info(args);
 }
 
-
-var conf = require(appRoot + "/config.json");
-var v = new vsphere_easy(conf);
-
-v.vm_info();
+module.exports = vsphere_easy;
 
 // http://pubs.vmware.com/vsphere-60/index.jsp?topic=/com.vmware.wssdk.apiref.doc/index.html&single=true
 // https://labs.vmware.com/flings/vsphere-sdk-for-javascript?download_url=https%3A%2F%2Fdownload3.vmware.com%2Fsoftware%2Fvmw-tools%2Fvsphere-sdk-for-javascript%2Fvsphere-1.1.0-src.tgz#comments
