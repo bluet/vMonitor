@@ -2,5 +2,7 @@
   "hostname": "",
   "username": "",
   "password": "",
+  "rdb_dbname": "",
+  "rdb_hostname": "",
   "ignore_tls_error": 1
 }
