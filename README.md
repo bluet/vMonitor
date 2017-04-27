@@ -1,4 +1,4 @@
-# vsphere-vm-monitor
+# vMonitor
 
 VirtualMachine and Service monitor for vSphere (VMware ESXi Cluster)
 
@@ -7,8 +7,8 @@ VirtualMachine and Service monitor for vSphere (VMware ESXi Cluster)
 1. Clone the repo (or download)
 
 ```
-git clone https://github.com/BlueT/vsphere-vm-monitor.git
-cd vsphere-vm-monitor
+git clone https://github.com/BlueT/vMonitor.git
+cd vMonitor
 ```
 
 2. Setup vsphere-vm-monitor
